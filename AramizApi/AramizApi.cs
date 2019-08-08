@@ -10,6 +10,10 @@ using Newtonsoft.Json;
 using Microsoft.WindowsAzure.Storage.Table;
 using System.Linq;
 using Microsoft.WindowsAzure.Storage;
+using System.Security.Claims;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using Microsoft.Net.Http.Headers;
 
 namespace Aramiz
 {
@@ -22,6 +26,13 @@ namespace Aramiz
             ILogger log)
         {
             log.LogInformation("Creating new aramiz blogpost entity");
+
+            ClaimsPrincipal principal;
+            AuthenticationHeaderValue.TryParse(req.Headers[HeaderNames.Authorization], out var authHeader);
+            if((principal = await Security.ValidateTokenAsync(authHeader)) == null)
+            {
+                return new UnauthorizedResult();
+            }
 
             string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
             var input = JsonConvert.DeserializeObject<BlogCreateModel>(requestBody);
@@ -70,6 +81,12 @@ namespace Aramiz
             [Table("aramizblog", Connection = "AzureWebJobsStorage")] CloudTable blogTable,
             ILogger log, string blogid)
         {
+            ClaimsPrincipal principal;
+            AuthenticationHeaderValue.TryParse(req.Headers[HeaderNames.Authorization], out var authHeader);
+            if ((principal = await Security.ValidateTokenAsync(authHeader)) == null)
+            {
+                return new UnauthorizedResult();
+            }
 
             string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
             var updated = JsonConvert.DeserializeObject<BlogUpdateModel>(requestBody);
@@ -105,6 +122,12 @@ namespace Aramiz
             [Table("aramizblog", Connection = "AzureWebJobsStorage")] CloudTable blogTable,
             ILogger log, string blogid)
         {
+            ClaimsPrincipal principal;
+            AuthenticationHeaderValue.TryParse(req.Headers[HeaderNames.Authorization], out var authHeader);
+            if ((principal = await Security.ValidateTokenAsync(authHeader)) == null)
+            {
+                return new UnauthorizedResult();
+            }
 
             var deleteOperation = TableOperation.Delete(new TableEntity()
             { PartitionKey = "blog", RowKey = blogid, ETag = "*" });
