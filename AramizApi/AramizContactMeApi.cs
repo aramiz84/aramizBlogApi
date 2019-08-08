@@ -31,16 +31,16 @@ namespace Aramiz
 
                 var message = new SendGridMessage();
                 message.AddTo(emailObject.To);
-                message.AddContent("text/html", "From: " 
-                    + emailObject.From + "<br/> Phone: " 
+                message.AddContent("text/html", "Name: " 
+                    + emailObject.Name + "<br/> Phone: " 
                     + emailObject.Phone + "<br/><br/>" 
                     + emailObject.Body);
-                message.SetFrom(new EmailAddress(emailObject.From));
-                message.SetSubject("From Aramiz.net - " + emailObject.Subject);
+                message.SetFrom(new EmailAddress(emailObject.Email));
+                message.SetSubject("Message from 'Contact me' form - Aramiz.net");
 
                 await messageCollector.AddAsync(message);
 
-                return new OkObjectResult("Email Sent Successfully - From: " + emailObject.From);
+                return new OkObjectResult("Email Sent Successfully - From: " + emailObject.Email);
             }
             catch (Exception ex)
             {
@@ -51,8 +51,8 @@ namespace Aramiz
         public class OutgoingEmail
         {
             public string To { get;} = "emil@aramiz.net";
-            public string From { get; set; }
-            public string Subject { get; set; }
+            public string Name { get; set; }
+            public string Email { get; set; }
             public string Phone { get; set; }
             public string Body { get; set; }
         }
