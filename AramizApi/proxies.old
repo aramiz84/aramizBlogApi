@@ -24,7 +24,7 @@
     },
     "Blogapi": {
       "matchCondition": {
-        "route": "/api/{*url}"
+        "route": "/api/blog/{*url}"
       },
       "backendUri": "https://aramizblog.azurewebsites.net/api/{url}"
     }
