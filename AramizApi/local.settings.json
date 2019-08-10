@@ -2,7 +2,8 @@
   "IsEncrypted": false,
   "Values": {
     "AzureWebJobsStorage": "UseDevelopmentStorage=true",
-    "FUNCTIONS_WORKER_RUNTIME": "dotnet"
+    "FUNCTIONS_WORKER_RUNTIME": "dotnet",
+    "SendGridApiKey": "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",
   },
   "Host": {
     "CORS": "*"
