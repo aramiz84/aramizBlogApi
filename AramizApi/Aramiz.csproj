@@ -32,11 +32,8 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <CopyToPublishDirectory>Never</CopyToPublishDirectory>
     </None>
-<<<<<<< HEAD
     <None Update="proxies.old">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-=======
->>>>>>> 60c1cafd1e140e72bd2a52721255f2bfbcb50bd8
   </ItemGroup>
 </Project>

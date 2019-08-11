@@ -10,11 +10,11 @@ namespace Aramiz
         public string expId { get; set; } = Guid.NewGuid().ToString("n");
         public DateTime expCreatedDate { get; set; } = DateTime.Now;
         public DateTime? expModifiyDate { get; set; }
-        public string expCompanyLogo { get; set; }
+        public string expCompanyLogoUri { get; set; }
         public string expEmployeeTitle { get; set; }
         public string expCompany { get; set; }
         public string expLocation { get; set; }
-        public string expCurrentWorkRole { get; set; }
+        public bool expCurrentWorkRole { get; set; } = false;
         public DateTime expStartDate { get; set; }
         public DateTime expEndDate { get; set; }
         public string expWorkSubject { get; set; }
@@ -25,10 +25,10 @@ namespace Aramiz
     public class ExperienceCreateModel
     {
         public string expEmployeeTitle { get; set; }
-        public string expCompanyLogo { get; set; }
+        public string expCompanyLogoUri { get; set; }
         public string expCompany { get; set; }
         public string expLocation { get; set; }
-        public string expCurrentWorkRole { get; set; }
+        public bool expCurrentWorkRole { get; set; }
         public DateTime expStartDate { get; set; }
         public DateTime expEndDate { get; set; }
         public string expWorkSubject { get; set; }
@@ -40,10 +40,10 @@ namespace Aramiz
     {
         public DateTime expModifiyDate { get; set; } = DateTime.Now;
         public string expEmployeeTitle { get; set; }
-        public string expCompanyLogo { get; set; }
+        public string expCompanyLogoUri { get; set; }
         public string expCompany { get; set; }
         public string expLocation { get; set; }
-        public string expCurrentWorkRole { get; set; }
+        public bool expCurrentWorkRole { get; set; }
         public DateTime expStartDate { get; set; }
         public DateTime expEndDate { get; set; }
         public string expWorkSubject { get; set; }
@@ -55,11 +55,11 @@ namespace Aramiz
     {
         public DateTime expCreatedDate { get; set; }
         public DateTime? expModifiyDate { get; set; }
-        public string expCompanyLogo { get; set; }
+        public string expCompanyLogoUri { get; set; }
         public string expEmployeeTitle { get; set; }
         public string expCompany { get; set; }
         public string expLocation { get; set; }
-        public string expCurrentWorkRole { get; set; }
+        public bool expCurrentWorkRole { get; set; }
         public DateTime expStartDate { get; set; }
         public DateTime expEndDate { get; set; }
         public string expWorkSubject { get; set; }
@@ -76,7 +76,7 @@ namespace Aramiz
                 PartitionKey = "experience",
                 RowKey = experience.expId,
                 expCreatedDate = experience.expCreatedDate,
-                expCompanyLogo = experience.expCompanyLogo,
+                expCompanyLogoUri = experience.expCompanyLogoUri,
                 expEmployeeTitle = experience.expEmployeeTitle,
                 expCompany = experience.expCompany,
                 expLocation = experience.expLocation,
@@ -96,7 +96,7 @@ namespace Aramiz
                 expId = experience.RowKey,
                 expCreatedDate = experience.expCreatedDate,
                 expModifiyDate = experience.expModifiyDate,
-                expCompanyLogo = experience.expCompanyLogo,
+                expCompanyLogoUri = experience.expCompanyLogoUri,
                 expEmployeeTitle = experience.expEmployeeTitle,
                 expCompany = experience.expCompany,
                 expLocation = experience.expLocation,
