@@ -14,12 +14,12 @@ namespace Aramiz
         public string expEmployeeTitle { get; set; }
         public string expCompany { get; set; }
         public string expLocation { get; set; }
-        public bool expCurrentWorkRole { get; set; } = false;
+        public bool expCurrentWorkRole { get; set; } = true;
         public DateTime expStartDate { get; set; }
-        public DateTime expEndDate { get; set; }
+        public DateTime? expEndDate { get; set; }
         public string expWorkSubject { get; set; }
         public string expWorkDescription { get; set; }
-        public string[] expWorkLinks { get; set; }
+        public string expWorkLinks { get; set; }
     }
 
     public class ExperienceCreateModel
@@ -30,10 +30,10 @@ namespace Aramiz
         public string expLocation { get; set; }
         public bool expCurrentWorkRole { get; set; }
         public DateTime expStartDate { get; set; }
-        public DateTime expEndDate { get; set; }
+        public DateTime? expEndDate { get; set; }
         public string expWorkSubject { get; set; }
         public string expWorkDescription { get; set; }
-        public string[] expWorkLinks { get; set; }
+        public string expWorkLinks { get; set; }
     }
 
     public class ExperienceUpdateModel
@@ -45,10 +45,10 @@ namespace Aramiz
         public string expLocation { get; set; }
         public bool expCurrentWorkRole { get; set; }
         public DateTime expStartDate { get; set; }
-        public DateTime expEndDate { get; set; }
+        public DateTime? expEndDate { get; set; }
         public string expWorkSubject { get; set; }
         public string expWorkDescription { get; set; }
-        public string[] expWorkLinks { get; set; }
+        public string expWorkLinks { get; set; }
     }
 
     public class ExperienceEntity : TableEntity
@@ -61,10 +61,10 @@ namespace Aramiz
         public string expLocation { get; set; }
         public bool expCurrentWorkRole { get; set; }
         public DateTime expStartDate { get; set; }
-        public DateTime expEndDate { get; set; }
+        public DateTime? expEndDate { get; set; }
         public string expWorkSubject { get; set; }
         public string expWorkDescription { get; set; }
-        public string[] expWorkLinks { get; set; }
+        public string expWorkLinks { get; set; }
     }
 
     public static class ExpericenceMappings
